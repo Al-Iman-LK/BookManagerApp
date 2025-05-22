@@ -1,0 +1,53 @@
+<div class="container">
+  <h2>Book Management</h2>
+  
+  <div class="row mb-4">
+    <div class="col">
+      <button class="btn btn-primary" (click)="resetForm()">Add New Book</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Book List</h3>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>ISBN</th>
+              <th>Publication Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let book of books">
+              <td>{{ book.id }}</td>
+              <td>{{ book.title }}</td>
+              <td>{{ book.author }}</td>
+              <td>{{ book.isbn }}</td>
+              <td>{{ book.publicationDate | date:'mediumDate' }}</td>
+              <td>
+                <button class="btn btn-sm btn-info me-2" (click)="editBook(book)">Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="deleteBook(book.id)">Delete</button>
+              </td>
+            </tr>
+            <tr *ngIf="books.length === 0">
+              <td colspan="6" class="text-center">No books found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="col-md-4" *ngIf="isEditing || selectedBook === null">
+      <app-book-form 
+        [book]="selectedBook" 
+        [isEditing]="isEditing" 
+        (bookSaved)="onBookSaved($event)">
+      </app-book-form>
+    </div>
+  </div>
+</div>

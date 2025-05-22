@@ -138,11 +138,3 @@ The API will start running at `http://localhost:5016`.
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## API Endpoints
-
-- `GET /api/books` - Get all books
-- `GET /api/books/{id}` - Get a specific book
-- `POST /api/books` - Create a new book
-- `PUT /api/books/{id}` - Update an existing book
-- `DELETE /api/books/{id}` - Delete a book

@@ -1,0 +1,129 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h1 class="display-4 text-center text-primary mb-4">📚 Books Dashboard</h1>
+      <p class="text-center text-muted">Welcome to your book management dashboard</p>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <!-- Widget 1: Table View - Latest 5 Books -->
+    <div class="col-lg-6">
+      <div class="card h-100 shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h5 class="card-title mb-0">
+            <i class="fas fa-clock me-2"></i>Latest 5 Books
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>ISBN</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let book of latestBooks">
+                  <td><span class="badge bg-secondary">{{ book.id }}</span></td>
+                  <td class="fw-medium">{{ book.title }}</td>
+                  <td>{{ book.author }}</td>
+                  <td><code>{{ book.isbn }}</code></td>
+                </tr>
+                <tr *ngIf="latestBooks.length === 0">
+                  <td colspan="4" class="text-center text-muted py-3">
+                    <i class="fas fa-book-open me-2"></i>No books available
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Widget 2: List View - Oldest 10 Books -->
+    <div class="col-lg-6">
+      <div class="card h-100 shadow-sm">
+        <div class="card-header bg-success text-white">
+          <h5 class="card-title mb-0">
+            <i class="fas fa-history me-2"></i>Oldest 10 Books
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="list-group list-group-flush" style="max-height: 400px; overflow-y: auto;">
+            <div *ngFor="let book of oldestBooks" class="list-group-item list-group-item-action border-0 py-3">
+              <div class="d-flex justify-content-between align-items-start">
+                <div class="flex-grow-1">
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="badge bg-info me-2">{{ book.id }}</span>
+                    <h6 class="mb-0 fw-bold">{{ book.title }}</h6>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2 mt-2">
+                    <small class="text-muted">
+                      <i class="fas fa-barcode me-1"></i>{{ book.isbn }}
+                    </small>
+                    <small class="text-muted">
+                      <i class="fas fa-calendar me-1"></i>{{ formatDate(book.publicationDate) }}
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="oldestBooks.length === 0" class="list-group-item text-center text-muted py-4">
+              <i class="fas fa-book-open me-2"></i>No books available
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Widget 3: Donut Chart - Books by Author -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="card shadow-sm">
+        <div class="card-header bg-warning text-dark">
+          <h5 class="card-title mb-0">
+            <i class="fas fa-chart-pie me-2"></i>Books Distribution by Author
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div style="position: relative; height: 400px;">
+                <canvas #donutChart></canvas>
+              </div>
+              <div *ngIf="Object.keys(authorStats).length === 0" class="text-center text-muted py-5">
+                <i class="fas fa-chart-pie fa-3x mb-3 opacity-50"></i>
+                <p>No data available for chart</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="card shadow-sm border-0">
+        <div class="card-body text-center py-4">
+          <h5 class="card-title text-muted mb-3">Quick Actions</h5>
+          <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a routerLink="/books" class="btn btn-outline-primary btn-lg">
+              <i class="fas fa-list me-2"></i>View All Books
+            </a>
+            <a routerLink="/books" class="btn btn-outline-success btn-lg">
+              <i class="fas fa-plus me-2"></i>Add New Book
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -26,3 +26,4 @@ C:\Users\User\enhanzer_assignment\BookManager\Backend\BookManager.API\obj\Debug\
 C:\Users\User\enhanzer_assignment\BookManager\Backend\BookManager.API\obj\Debug\net9.0\BookManager.API.pdb
 C:\Users\User\enhanzer_assignment\BookManager\Backend\BookManager.API\obj\Debug\net9.0\BookManager.API.genruntimeconfig.cache
 C:\Users\User\enhanzer_assignment\BookManager\Backend\BookManager.API\obj\Debug\net9.0\ref\BookManager.API.dll
+C:\Users\User\enhanzer_assignment\BookManager\Backend\BookManager.API\obj\Debug\net9.0\BookManager.API.sourcelink.json
